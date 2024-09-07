@@ -24,8 +24,9 @@ public class JobRESTController {
         return service.getJob(postId);
     }
     @PostMapping("jobPost")
-    public void addJob(@RequestBody JobPost jobPost){ // to return json data
+    public JobPost addJob(@RequestBody JobPost jobPost){ // to return json data
         service.addJob(jobPost);
+        return jobPost;
     }
 
 }
