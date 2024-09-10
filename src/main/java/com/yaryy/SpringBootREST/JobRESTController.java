@@ -14,7 +14,7 @@ public class JobRESTController {
     @Autowired
     private JobService service;
 
-    @GetMapping(path="jobPosts", produces = {"application/json"}) // only json data
+    @GetMapping(path="jobPosts") // only json data /*, produces = {"application/json"}*/
     // @ResponseBody  // to return a data not a view
     public List<JobPost> getAllJobs(){
         return service.getAllJobs();
