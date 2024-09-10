@@ -23,6 +23,11 @@ public class JobRESTController {
     public JobPost getJob(@PathVariable("postId") int postId){
         return service.getJob(postId);
     }
+    @GetMapping("jobPost/keyword/{keyword}")
+    public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword){
+        return service.search(keyword);
+    }
+
     @PostMapping(path="jobPost", consumes = {"application/xml"})
     public JobPost addJob(@RequestBody JobPost jobPost){ // to return json data
         service.addJob(jobPost);
