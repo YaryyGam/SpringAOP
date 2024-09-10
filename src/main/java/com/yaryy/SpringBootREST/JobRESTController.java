@@ -28,8 +28,8 @@ public class JobRESTController {
         return service.search(keyword);
     }
 
-    @PostMapping(path="jobPost", consumes = {"application/xml"})
-    public JobPost addJob(@RequestBody JobPost jobPost){ // to return json data
+    @PostMapping("jobPost")
+    public JobPost addJob(@RequestBody JobPost jobPost){
         service.addJob(jobPost);
         return service.getJob(jobPost.getPostId());
     }
