@@ -13,15 +13,17 @@ public class PerformanceMonitorAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PerformanceMonitorAspect.class);
 
-    @Around("execution(* com.yaryy.SpringBootREST.service.JobService.getAllJobs(..))")
-    public void monitorTime(ProceedingJoinPoint joinPoint) throws Throwable {
+    @Around("execution(* com.yaryy.SpringBootREST.service.JobService.*(..))")
+    public Object monitorTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
 
-        joinPoint.proceed();
+        Object object = joinPoint.proceed();
 
         long end = System.currentTimeMillis();
 
-        LOGGER.info("Time taken " + (end-start) + " ms");
+        LOGGER.info("Time taken by : " + joinPoint.getSignature().getName() + " " + (end-start) + " ms");
+
+        return object;
     }
 
 }
